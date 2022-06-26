@@ -14,14 +14,15 @@ public class Student {
      * To create new student by initializing.
      * Fess for every student is 30,000$.
      * Fees Total initially is 0.
-     * @param id  id for student  unique.
-     * @param name name for student.
+     *
+     * @param id    id for student  unique.
+     * @param name  name for student.
      * @param grade grade for student.
      */
-    public Student(String id, String name,int grade){
+    public Student(String id, String name, int grade) {
         feesTotal = 30000;
-        feesPaid= 0;
-        this. id= id;
+        feesPaid = 0;
+        this.id = id;
         this.name = name;
         this.grade = grade;
     }
@@ -47,14 +48,32 @@ public class Student {
     }
 
     /**
-     * Adding the fees to feesPaid field
+     * Pays select amount as fees to school.
+     *
      * @param fees
      */
-    public void updateFeesPaid(int fees) {
+    public void payFees(int fees) {
+        if (fees < 0 || fees > 30000)
+            throw new IllegalArgumentException("Invalid fees, paid fees should be between 1$, 30000$");
         this.feesPaid += fees;
+        School.updateTotalMoneyEarn(feesPaid);
     }
 
     public void setGrade(int grade) {
         this.grade = grade;
+    }
+
+    /**
+     * @return the remaining fees.
+     */
+    public int getRemainingFees() {
+        return this.feesTotal - this.feesPaid;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Student's name : " + this.name +
+                " Total fees paid: $" + this.feesTotal;
     }
 }

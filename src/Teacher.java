@@ -6,6 +6,7 @@ public class Teacher {
     private String id;
     private String name;
     private int salary;
+    private int salaryEraned;
 
     /**
      * To create new Teacher by initializing.
@@ -30,5 +31,20 @@ public class Teacher {
     }
     public void setSalary(int salary) {
         this.salary = salary;
+    }
+
+    /**
+     * Adds salary to salaryEarned.
+     * Removes from total money earned to school.
+     * @param salary
+     */
+    public void recevieSalary(int salary){
+        salaryEraned += salary;
+        School.updateTotalMoneySpent(salaryEraned);
+    }
+
+    @Override
+    public String toString() {
+        return "Teacher's name : " + this.getName()+" Total salary : $" +this.salaryEraned;
     }
 }

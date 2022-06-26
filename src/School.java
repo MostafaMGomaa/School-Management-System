@@ -7,8 +7,8 @@ public class School {
      */
     private List<Teacher> teachers;
     private List<Student> students;
-    private int totalMoneyEarn;
-    private int totalMoneySpent;
+    private static int totalMoneyEarn;
+    private static int totalMoneySpent;
 
     /**
      * New school object is created.
@@ -23,49 +23,56 @@ public class School {
         totalMoneySpent = 0;
     }
 
-    public List<Teacher> getTeachers(){
+    public List<Teacher> getTeachers() {
         return teachers;
     }
-    public List<Student> getStudents(){
+
+    public List<Student> getStudents() {
         return students;
     }
-    public int getTotalMoneySpent(){
+
+    public int getTotalMoneySpent() {
         return totalMoneySpent;
     }
-    public int getTotalMoneyEarn(){
+
+    public int getTotalMoneyEarn() {
         return totalMoneyEarn;
     }
 
     /**
      * Adds Teacher to school
+     *
      * @param newTeacher Teacher object(id, name, salary)
      */
-    public void addTeacher(Teacher newTeacher){
+    public void addTeacher(Teacher newTeacher) {
         teachers.add(newTeacher);
     }
 
     /**
      * Adds Student  to school
+     *
      * @param newStudent Student object(id, name, feesPaid, feesTotal)
      */
-    public void addStudent(Student newStudent){
+    public void addStudent(Student newStudent) {
         students.add(newStudent);
     }
 
     /**
      * Add the total monet earned by school
+     *
      * @param moneyEarn money earn by the school
      */
-    public void updateTotalMoneyEarn(int moneyEarn) {
-        this.totalMoneyEarn += moneyEarn;
+    public static void updateTotalMoneyEarn(int moneyEarn) {
+        totalMoneyEarn += moneyEarn;
     }
 
     /**
      * Add the total monet spend by school
      * its salary of teachers
+     *
      * @param moneySpent money spent by the school
      */
-    public void setTotalMoneySpent(int moneySpent) {
-        this.totalMoneyEarn -= moneySpent;
+    public static void updateTotalMoneySpent(int moneySpent) {
+        totalMoneyEarn -= moneySpent;
     }
 }
